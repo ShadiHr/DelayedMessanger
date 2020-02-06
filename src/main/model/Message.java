@@ -4,6 +4,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+// Represents a message having a list of recipients, a body, delivery date and time, and a status
 public class Message {
 
     private String body;
@@ -13,7 +15,7 @@ public class Message {
     private Status status;  //TODO: complete the enumeration
 
 
-   // EFFECTS: composes a new message with empty body
+   // EFFECTS: composes a new message with an empty body
     public Message() {
         body = "";
         recipients = new ArrayList<>();
@@ -31,8 +33,7 @@ public class Message {
 
     // REQUIRES: message must already be scheduled (status: scheduled for delivery)
     // EFFECTS: returns message's delivery time
-    public Time
-    getDeliveryTime() {
+    public Time getDeliveryTime() {
         return deliveryTime;
     }
 

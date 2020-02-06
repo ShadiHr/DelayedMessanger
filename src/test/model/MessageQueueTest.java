@@ -35,3 +35,6 @@ public class MessageQueueTest {
         assertEquals(3, q1.getQueue().size());
     }
 }
+
+
+// TODO: incorporate tests for isEmpty() and isFull()

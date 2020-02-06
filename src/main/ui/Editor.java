@@ -11,13 +11,14 @@ import java.util.Scanner;
 
 import static java.lang.Integer.valueOf;
 
+// Message editor application
 public class Editor {
-
 
     private MessageQueue messages;
     private Message message;
     private Scanner input;
 
+    // EFFECTS: initiates the editor application with a new empty message and an empty queue
     public Editor() {
         message = new Message();
         messages = new MessageQueue();
@@ -48,11 +49,13 @@ public class Editor {
             messages.addToQueue(message);
             System.out.println("Your message has been added to the queue. Have a great day!");
         } else {
-            System.out.println("Would you like to save this draft?");
+            System.out.println("Would you like to save this draft?");  //TODO: get rid of the draft concept for now
         }
 
     }
 
+    // MODIFIES: message
+    // EFFECTS: requests user for a delivery time and sets that as the message's delivery time
     private void askForDeliveryTime() {
         String command;
         System.out.println("Please enter a delivery time (24 hr) in the hh:mm:ss format");
@@ -65,6 +68,8 @@ public class Editor {
         message.setDeliveryTime(hour, minute, second);
     }
 
+    // MODIFIES: message
+    // EFFECTS: requests user for a delivery date and sets that as the message's delivery date
     private void askForDeliveryDate() {
         String command;
         System.out.println("Please enter the date on which you'd like your message delivered in a YYYY MM DD format");
@@ -77,6 +82,8 @@ public class Editor {
         message.setDeliveryDate(year, month, day);
     }
 
+    // MODIFIES: message
+    // EFFECTS: requests user for content and sets that as the message's body
     private void askForMessageBody() {
         String command;
         System.out.println("What would you like to say?");
@@ -85,6 +92,8 @@ public class Editor {
         message.compose(command);
     }
 
+    // MODIFIES: message
+    // EFFECTS: requests user for recipients and adds them to message's recipients
     private void askForRecipient() {
         String command;
         System.out.println("Who would you like to send this message to?");
@@ -98,3 +107,4 @@ public class Editor {
     }
 
 }
+ // TODO: make sure that helper functions are doing one thing at a time

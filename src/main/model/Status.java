@@ -1,5 +1,5 @@
 package model;
 
 public enum Status {
-    Sent, Scheduled, Draft
+    Sent, Scheduled
 }
