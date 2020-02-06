@@ -1,25 +1,22 @@
 package model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Message {
 
     private String body;
-    private RecipientList recipients;
+    private ArrayList<Recipient> recipients;
     private Date deliveryDate;
     private Time deliveryTime;
-    private Status status;
+    private Status status;  //TODO: complete the enumeration
 
 
    // EFFECTS: composes a new message with empty body
     public Message() {
         body = "";
-        recipients = new RecipientList();
-        deliveryDate = null;
-        deliveryTime = null;
-        status = null;  //TODO: this will need to reflect the draft status but first need to complete enum class
-
+        recipients = new ArrayList<>();
     }
 
     // EFFECTS: returns the message body
@@ -34,13 +31,14 @@ public class Message {
 
     // REQUIRES: message must already be scheduled (status: scheduled for delivery)
     // EFFECTS: returns message's delivery time
-    public Time getDeliveryTime() {
+    public Time
+    getDeliveryTime() {
         return deliveryTime;
     }
 
 
     // EFFECTS: returns recipient
-    public RecipientList getRecipients() {
+    public ArrayList<Recipient> getRecipients() {
         return recipients;
     }
 
@@ -56,7 +54,7 @@ public class Message {
     // MODIFIES: this
     // EFFECTS: assigns the given string to be the message's recipient(s)
     public void sendTo(Recipient r) {
-        recipients.addRecipient(r);
+        recipients.add(r);
     }
 
     // MODIFIES: this
@@ -82,6 +80,14 @@ public class Message {
     // EFFECTS: assigns the given string as the message's status
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String listRecipients() {
+        String list = "";
+        for (Recipient item : recipients) {
+            list = list + item.getEmailAddress() + "; ";
+        }
+        return list;
     }
 
 }

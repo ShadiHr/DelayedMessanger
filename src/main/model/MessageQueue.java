@@ -18,3 +18,4 @@ public class MessageQueue {
         queue.add(m);
     }
 }
+// TODO: learn about java queue and utilize here instead

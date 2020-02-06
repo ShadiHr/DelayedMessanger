@@ -2,14 +2,12 @@ package model;
 
 public class Recipient {
 
-    private String firstName;
+    private String firstName; //TODO: figure out usage/ is it necessary?
     private String lastName;
     private String emailAddress;
 
     public Recipient() {
-        firstName = "";
-        lastName = "";
-        emailAddress = "";
+
     }
 
     public String getFirstName() {
