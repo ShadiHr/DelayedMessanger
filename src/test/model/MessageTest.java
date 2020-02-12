@@ -14,7 +14,6 @@ class MessageTest {
     ArrayList<Recipient> myRecipients;
     Recipient r1;
     Recipient r2;
-    Status status;
 
     @BeforeEach
     public void runBefore() {
