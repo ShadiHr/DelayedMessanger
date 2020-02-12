@@ -5,41 +5,61 @@ import model.Message;
 import model.MessageQueue;
 import model.Recipient;
 
-import java.text.DateFormat;
-import java.util.Date;
+import javax.swing.*;
 import java.util.Scanner;
-
-import static java.lang.Integer.valueOf;
 
 // Message editor application
 public class Editor {
 
     private MessageQueue messages;
-    private Message message;
     private Scanner input;
 
-    // EFFECTS: initiates the editor application with a new empty message and an empty queue
+    // EFFECTS: initiates the editor application with a new, empty message queue
     public Editor() {
-        message = new Message();
         messages = new MessageQueue();
+        input = new Scanner(System.in);
     }
 
 
     // MODIFIES: this
     // EFFECTS: processes user input
     public void runEditor() {   //TODO: make a permanent while true loop so data is not lost (add quit cue)
-        input = new Scanner(System.in);
+        while (true) {
 
-        askForRecipient();
+            System.out.println("To compose a new message, enter 'c'");
+            System.out.println("To view the message queue, enter 'v'");
+            System.out.println("To quit the menu, enter 'q'");
+            String command = input.nextLine();
 
-        askForMessageBody();
+            if (command.equals("c")) {
+                composeMessage();
+            } else if (command.equals("v")) {
+                printQueue();
+            } else if (command.equals("q")) {
+                System.out.println("Have a nice day!");
+                System.exit(0);
+            }
 
-        askForDeliveryDate();
+        }
 
-        askForDeliveryTime();
+    }
+
+    // MODIFIES: this
+    // EFFECT: process user input to compose a new message
+    public void composeMessage() {
+
+        Message message = new Message();
+
+        askForRecipient(message);
+
+        askForMessageBody(message);
+
+        askForDeliveryDate(message);
+
+        askForDeliveryTime(message);
 
         System.out.println("Would you like to add the following message to the queue?");
-        System.out.println("Recipient: " + message.listRecipients());
+        System.out.println("Recipient: " + message.getRecipients());
         System.out.println("Message: " + message.getBody());
         System.out.println("Delivery date: " + message.getDeliveryDate());
         System.out.println("Delivery time: " + message.getDeliveryTime());
@@ -48,20 +68,31 @@ public class Editor {
         if (command.toLowerCase().equals("yes")) {
             messages.addToQueue(message);
             System.out.println("Your message has been added to the queue. Have a great day!");
-        } else {
-            System.out.println("Would you like to save this draft?");  //TODO: get rid of the draft concept for now
         }
+//        else {
+//            System.out.println("Would you like to save this draft?");  //TODO: get rid of the draft concept for now
+//        }
+    }
 
+
+    public void printQueue() {
+        String output = "";
+        int index = 0;
+        for (Message item : messages.getQueue()) {
+            index++;
+            output += index + " - " + item.getBody() + "\n";
+        }
+        System.out.println(output);
     }
 
     // MODIFIES: message
     // EFFECTS: requests user for a delivery time and sets that as the message's delivery time
-    private void askForDeliveryTime() {
+    private void askForDeliveryTime(Message message) {
         String command;
         System.out.println("Please enter a delivery time (24 hr) in the hh:mm:ss format");
         command = input.nextLine();
 
-        int hour = Integer.parseInt(command.substring(0,2));
+        int hour = Integer.parseInt(command.substring(0, 2));
         int minute = Integer.parseInt(command.substring(3, 5));
         int second = Integer.parseInt(command.substring(6));
 
@@ -70,7 +101,7 @@ public class Editor {
 
     // MODIFIES: message
     // EFFECTS: requests user for a delivery date and sets that as the message's delivery date
-    private void askForDeliveryDate() {
+    private void askForDeliveryDate(Message message) {
         String command;
         System.out.println("Please enter the date on which you'd like your message delivered in a YYYY MM DD format");
         command = input.nextLine();
@@ -84,7 +115,7 @@ public class Editor {
 
     // MODIFIES: message
     // EFFECTS: requests user for content and sets that as the message's body
-    private void askForMessageBody() {
+    private void askForMessageBody(Message message) {
         String command;
         System.out.println("What would you like to say?");
         command = input.nextLine();
@@ -94,17 +125,21 @@ public class Editor {
 
     // MODIFIES: message
     // EFFECTS: requests user for recipients and adds them to message's recipients
-    private void askForRecipient() {
-        String command;
-        System.out.println("Who would you like to send this message to?");
-        command = input.nextLine();
-        command = command.toLowerCase();
+    private void askForRecipient(Message message) {
+        while (true) {
+            System.out.println("Please enter an email address: (enter 'q' to quit)");
+            String command = input.nextLine();
 
-        Recipient recipient = new Recipient();
-        recipient.setEmailAddress(command);
+            if (command.equals("q")) {
+                break;
+            }
 
-        message.getRecipients().add(recipient);
+            Recipient recipient = new Recipient();
+            recipient.setEmailAddress(command);
+            message.getRecipients().add(recipient);
+
+        }
     }
 
 }
- // TODO: make sure that helper functions are doing one thing at a time
+

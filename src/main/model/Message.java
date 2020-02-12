@@ -26,10 +26,10 @@ public class Message {
         return body;
     }
 
-    // EFFECTS: returns message's status
-    public Status getStatus() {
-        return status;
-    }
+//    // EFFECTS: returns message's status
+//    public Status getStatus() {
+//        return status;
+//    }
 
     // REQUIRES: message must already be scheduled (status: scheduled for delivery)
     // EFFECTS: returns message's delivery time
@@ -76,19 +76,19 @@ public class Message {
         deliveryTime = new Time(hour, minute, second);
     }
 
-    // REQUIRES: status is one of "scheduled for delivery", "sent", "draft"
-    // MODIFIES: this
-    // EFFECTS: assigns the given string as the message's status
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String listRecipients() {
-        String list = "";
-        for (Recipient item : recipients) {
-            list = list + item.getEmailAddress() + "; ";
-        }
-        return list;
-    }
+//    // REQUIRES: status is one of "scheduled for delivery", "sent", "draft"
+//    // MODIFIES: this
+//    // EFFECTS: assigns the given string as the message's status
+//    public void setStatus(Status status) {
+//        this.status = status;
+//    }
+//
+//    public String listRecipients() {
+//        String list = "";
+//        for (Recipient item : recipients) {
+//            list = list + item.getEmailAddress() + "; ";
+//        }
+//        return list;
+//    }
 
 }

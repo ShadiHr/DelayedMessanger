@@ -45,5 +45,10 @@ public class Recipient {
         this.emailAddress = emailAddress.toLowerCase();
     }
 
+
+    // EFFECTS: returns the list of recipients' email addresses
+    public String toString() {
+        return emailAddress;
+    }
 }
 

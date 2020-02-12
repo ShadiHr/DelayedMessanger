@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 // Represents a message queue with a maximum number of items it can take
 public class MessageQueue {
-    public static final int MAX_SIZE = 10;
 
     private ArrayList<Message> queue;
 
@@ -30,10 +29,6 @@ public class MessageQueue {
         return queue.size() == 0;
     }
 
-    // EFFECTS: returns true if the queue is full, false otherwise
-    public boolean isFull() {
-        return queue.size() == MAX_SIZE;
-    }
 }
 
 // TODO: learn about java queue and utilize here instead

@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MessageQueueTest {
     MessageQueue q1;
@@ -21,9 +21,12 @@ public class MessageQueueTest {
 
     @Test
     public void testAddToQueueSingle() {
+        assertTrue(q1.isEmpty());
         q1.addToQueue(m1);
 
         assertEquals(1, q1.getQueue().size());
+
+        assertFalse(q1.isEmpty());
     }
 
     @Test
@@ -37,4 +40,4 @@ public class MessageQueueTest {
 }
 
 
-// TODO: incorporate tests for isEmpty() and isFull()
+// TODO: add more tests for 100% coverage

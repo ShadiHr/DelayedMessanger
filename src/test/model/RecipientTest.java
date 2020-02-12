@@ -41,5 +41,14 @@ public class RecipientTest {
         assertEquals("ali.smith@gmail.com", recipient.getEmailAddress());
     }
 
+    @Test
+    public void testToString() {
+        recipient.setFirstName("Jimmy");
+        recipient.setLastName("Smith");
+        recipient.setEmailAddress("jimmy.smith@gmail.com");
+
+        assertEquals("jimmy.smith@gmail.com", recipient.toString());
+    }
 }
 
+// TODO: add more tests for 100% coverage
