@@ -51,4 +51,3 @@ public class RecipientTest {
     }
 }
 
-// TODO: add more tests for 100% coverage

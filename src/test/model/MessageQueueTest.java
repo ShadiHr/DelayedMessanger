@@ -40,4 +40,4 @@ public class MessageQueueTest {
 }
 
 
-// TODO: add more tests for 100% coverage
+
