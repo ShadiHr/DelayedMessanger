@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-// Represents a message queue with a maximum number of items it can take
+// Represents a message queue
 public class MessageQueue {
 
     private ArrayList<Message> queue;
@@ -30,5 +30,3 @@ public class MessageQueue {
     }
 
 }
-
-// TODO: learn about java queue and utilize here instead

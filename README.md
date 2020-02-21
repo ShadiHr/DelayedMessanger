@@ -14,7 +14,9 @@ in my previous practice I was often in charge of organizing events and coordinat
 - As a user, I want to be able to specify **groups** or **individuals** as the recipients for my messages 
 - As a user, I want to be able to specify a **delivery date and time** for each message
 - As a user, I want to be able to **view** the messages that are scheduled for delivery
+- As a user, I want to be able to **save drafts** for messages, to be completed later 
+- As a user, I want to be able to **load drafts** and further edit them
 - As a user, I want to be able to **remove** a message from the delivery line up 
 - As a user, I want to be able to **edit** a message already added to the delivery line up 
-- As a user, I want to be able to **store drafts** for messages, to be completed later  
+ 
 
