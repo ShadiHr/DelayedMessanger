@@ -4,8 +4,13 @@ package ui;
 import model.Message;
 import model.MessageQueue;
 import model.Recipient;
+import persistence.Loader;
+import persistence.Saver;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 // Message editor application
@@ -13,17 +18,24 @@ public class Editor {
 
     private MessageQueue messages;
     private Scanner input;
+    private Saver saver;
+    private Loader loader;
+
 
     // EFFECTS: initiates the editor application with a new, empty message queue
-    public Editor() {
-        messages = new MessageQueue();
+    public Editor() throws IOException {
+        loader = new Loader();
+        messages = loader.load();
         input = new Scanner(System.in);
+        saver = new Saver();
+
+
     }
 
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    public void runEditor() {   //TODO: make a permanent while true loop so data is not lost (add quit cue)
+    public void runEditor() throws IOException {
         while (true) {
 
             System.out.println("To compose a new message, enter 'c'");
@@ -36,12 +48,9 @@ public class Editor {
             } else if (command.equals("v")) {
                 printQueue();
             } else if (command.equals("q")) {
-                System.out.println("Have a nice day!");
-                System.exit(0);
+                askToSave();
             }
-
         }
-
     }
 
     // MODIFIES: this
@@ -69,9 +78,6 @@ public class Editor {
             messages.addToQueue(message);
             System.out.println("Your message has been added to the queue. Have a great day!");
         }
-//        else {
-//            System.out.println("Would you like to save this draft?");  //TODO: get rid of the draft concept for now
-//        }
     }
 
 
@@ -139,6 +145,17 @@ public class Editor {
             message.getRecipients().add(recipient);
 
         }
+    }
+
+    private void askToSave() throws IOException {
+        String command;
+        System.out.println("would you like to save your queue?");
+        command = input.nextLine();
+        if (command.toLowerCase().equals("yes")) {
+            saver.save(messages);
+        }
+        System.out.println("Have a nice day!");
+        System.exit(0);
     }
 
 }

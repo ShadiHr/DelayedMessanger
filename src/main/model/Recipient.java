@@ -47,6 +47,7 @@ public class Recipient {
 
 
     // EFFECTS: returns the list of recipients' email addresses
+    @Override
     public String toString() {
         return emailAddress;
     }

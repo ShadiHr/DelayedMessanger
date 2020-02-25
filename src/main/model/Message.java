@@ -48,7 +48,7 @@ public class Message {
 
 
     // MODIFIES: this
-    // EFFECTS: assigns the given string to be the message's recipient(s)
+    // EFFECTS: adds the given string to be the message's recipient(s)
     public void sendTo(Recipient r) {
         recipients.add(r);
     }
@@ -70,6 +70,5 @@ public class Message {
     public void setDeliveryTime(int hour, int minute, int second) {
         deliveryTime = new Time(hour, minute, second);
     }
-
 
 }

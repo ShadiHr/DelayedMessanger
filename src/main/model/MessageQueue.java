@@ -24,9 +24,4 @@ public class MessageQueue {
         queue.add(m);
     }
 
-    // EFFECTS: returns true if the queue is empty, false otherwise
-    public boolean isEmpty() {
-        return queue.size() == 0;
-    }
-
 }

@@ -21,12 +21,11 @@ public class MessageQueueTest {
 
     @Test
     public void testAddToQueueSingle() {
-        assertTrue(q1.isEmpty());
+
         q1.addToQueue(m1);
 
         assertEquals(1, q1.getQueue().size());
 
-        assertFalse(q1.isEmpty());
     }
 
     @Test
