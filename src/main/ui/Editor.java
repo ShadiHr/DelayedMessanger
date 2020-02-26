@@ -25,8 +25,6 @@ public class Editor {
         messages = loader.load();
         input = new Scanner(System.in);
         saver = new Saver();
-
-
     }
 
 
@@ -43,7 +41,8 @@ public class Editor {
             if (command.equals("c")) {
                 composeMessage();
             } else if (command.equals("v")) {
-                printQueue();
+                viewQueue();
+
             } else if (command.equals("q")) {
                 askToSave();
             }
@@ -73,11 +72,40 @@ public class Editor {
 
         if (command.toLowerCase().equals("yes")) {
             messages.addToQueue(message);
-            System.out.println("Your message has been added to the queue. Have a great day!");
+            System.out.println("Your message has been added to the queue.");
         }
     }
 
 
+    // EFFECTS: displays the queue and provides user the option to filter by recipient
+    public void viewQueue() {
+        printQueue();
+        System.out.println("Would you like to filter by user?");
+        String command = input.nextLine();
+
+        if (command.toLowerCase().equals("yes")) {
+            System.out.println("Whose messages would you like to see?");
+            String user = input.nextLine();
+            filterByRecipient(user);
+        }
+    }
+
+    // EFFECTS: filters viewed queued by specific recipient
+    private void filterByRecipient(String user) {
+        String output = "";
+        int index = 0;
+        for (Message item : messages.getQueue()) {
+            for (Recipient target : item.getRecipients()) {
+                if (target.getEmailAddress().equals(user)) {
+                    index++;
+                    output += index + " - " + item.getBody() + "\n";
+                }
+            }
+        }
+        System.out.println(output);
+    }
+
+    // EFFECTS: displays the queue as an enumerated list containing the message bodies
     public void printQueue() {
         String output = "";
         int index = 0;

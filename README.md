@@ -17,6 +17,7 @@ in my previous practice I was often in charge of organizing events and coordinat
 - As a user, I want to be able to **save drafts** for messages, to be completed later 
 - As a user, I want to be able to **load drafts** and further edit them
 - As a user, I want to be able to **remove** a message from the delivery line up 
-- As a user, I want to be able to **edit** a message already added to the delivery line up 
+- As a user, I want to be able to **edit** a message already added to the delivery line up
+- As a user, I want to be able to ** find** all the messages scheduled to be sent to the **same user**  
  
 
