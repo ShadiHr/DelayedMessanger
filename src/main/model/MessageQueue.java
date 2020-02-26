@@ -1,9 +1,12 @@
 package model;
 
+import persistence.Saver;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Represents a message queue
-public class MessageQueue {
+public class MessageQueue implements Saveable {
 
     private ArrayList<Message> queue;
 
@@ -24,4 +27,9 @@ public class MessageQueue {
         queue.add(m);
     }
 
+    @Override
+    public void save() throws IOException {
+        Saver saver = new Saver();
+        saver.save(queue);
+    }
 }
