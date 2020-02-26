@@ -19,7 +19,7 @@ public class Saver {
     public void save(MessageQueue queue) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        FileWriter saver = new FileWriter("data/messageQueue.json");
+        FileWriter saver = new FileWriter("data/testMessageQueue.json");
         gson.toJson(queue, saver);
         saver.close();
 

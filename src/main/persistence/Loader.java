@@ -21,7 +21,7 @@ public class Loader {
         Gson gson = new Gson();
 
         try {
-            Reader loader = new FileReader("data/messageQueue.json");
+            Reader loader = new FileReader("data/testMessageQueue.json");
             MessageQueue queue = gson.fromJson(loader, MessageQueue.class);
             loader.close();
             return queue;
