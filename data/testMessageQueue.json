@@ -1,12 +1,11 @@
 {
   "queue": [
     {
-      "body": "",
-      "recipients": []
-    },
-    {
-      "body": "",
-      "recipients": []
+      "body": "hello",
+      "recipients": [
+        {},
+        {}
+      ]
     }
   ]
 }

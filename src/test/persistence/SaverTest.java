@@ -5,15 +5,13 @@ import model.MessageQueue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SaverTest {
-    public static final String TEST_FILE = "data/testMessageQueue.json";
+
     private Saver testSaver;
     private MessageQueue myMessages;
     private Message m1;

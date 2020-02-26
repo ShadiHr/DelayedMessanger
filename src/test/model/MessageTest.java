@@ -21,7 +21,7 @@ class MessageTest {
         myRecipients = new ArrayList<>();
         r1 = new Recipient();
         r2 = new Recipient();
-        //TODO: init the status here once enum is resolved
+
 
         r1.setFirstName("Jane");
         r1.setLastName("Doe");

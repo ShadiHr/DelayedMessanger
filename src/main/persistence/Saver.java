@@ -28,6 +28,3 @@ public class Saver {
 }
 
 
-
-// TODO: add all specifications
-// TODO: figure out if this is the right method to throw these exceptions
