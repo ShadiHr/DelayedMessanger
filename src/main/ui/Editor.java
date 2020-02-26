@@ -7,10 +7,7 @@ import model.Recipient;
 import persistence.Loader;
 import persistence.Saver;
 
-import javax.swing.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 // Message editor application
@@ -147,6 +144,8 @@ public class Editor {
         }
     }
 
+    // MODIFIES: .json file
+    // EFFECTS: saves message queue to .json file based on user's response
     private void askToSave() throws IOException {
         String command;
         System.out.println("would you like to save your queue?");

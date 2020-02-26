@@ -18,10 +18,15 @@ public class Loader {
 
     // EFFECTS: returns content of file as a MessageQueue object
     public MessageQueue load() throws IOException {
+        return load("data/testMessageQueue.json");
+    }
+
+    // EFFECTS: returns content of the given file as a MessageQueue object
+    public MessageQueue load(String path) throws IOException {
         Gson gson = new Gson();
 
         try {
-            Reader loader = new FileReader("data/testMessageQueue.json");
+            Reader loader = new FileReader(path);
             MessageQueue queue = gson.fromJson(loader, MessageQueue.class);
             loader.close();
             return queue;

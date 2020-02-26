@@ -6,9 +6,11 @@ import model.Recipient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class LoaderTest {
     Loader loader;
@@ -40,11 +42,38 @@ public class LoaderTest {
     }
 
     @Test
-    void testLoadMessages() throws IOException {
+    void testLoadMessagesFromDefaultPath() throws IOException {
 
-        MessageQueue output = loader.load();
-        assertEquals(2, output.getQueue().get(0).getRecipients().size());
+       try {
+           MessageQueue output = loader.load();
+           assertEquals(2, output.getQueue().get(0).getRecipients().size());
 
+       } catch (FileNotFoundException e) {
+           fail("FileNotFoundException should not have been thrown!");
+       }
+    }
+
+    @Test
+    void testLoadMessagesSpecificPathFound() throws IOException {
+
+        try {
+            MessageQueue output = loader.load("data/testMessageQueue.json");
+            assertEquals("hello", output.getQueue().get(0).getBody());
+
+        } catch (FileNotFoundException e) {
+            fail("FileNotFoundException should not have been thrown!");
+        }
+    }
+
+
+    @Test
+    void testFileNotFoundException() throws IOException {
+        try {
+            loader.load("data/unavailableFile.json");
+
+        } catch (FileNotFoundException e) {
+            // expected
+        }
 
     }
 
