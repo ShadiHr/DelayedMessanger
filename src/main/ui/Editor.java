@@ -79,7 +79,7 @@ public class Editor {
 
     // EFFECTS: displays the queue and provides user the option to filter by recipient
     public void viewQueue() {
-        printQueue();
+        messages.printQueue();
         System.out.println("Would you like to filter by user?");
         String command = input.nextLine();
 
@@ -105,16 +105,6 @@ public class Editor {
         System.out.println(output);
     }
 
-    // EFFECTS: displays the queue as an enumerated list containing the message bodies
-    public void printQueue() {
-        String output = "";
-        int index = 0;
-        for (Message item : messages.getQueue()) {
-            index++;
-            output += index + " - " + item.getBody() + "\n";
-        }
-        System.out.println(output);
-    }
 
     // MODIFIES: message
     // EFFECTS: requests user for a delivery time and sets that as the message's delivery time
@@ -165,10 +155,7 @@ public class Editor {
                 break;
             }
 
-            Recipient recipient = new Recipient();
-            recipient.setEmailAddress(command);
-            message.getRecipients().add(recipient);
-
+            message.sendTo(command);
         }
     }
 

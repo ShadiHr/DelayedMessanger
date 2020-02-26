@@ -48,9 +48,19 @@ public class Message {
 
 
     // MODIFIES: this
-    // EFFECTS: adds the given string to be the message's recipient(s)
+    // EFFECTS: adds the given recipient to message's recipient(s)
     public void sendTo(Recipient r) {
         recipients.add(r);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds the given string to message's recipients(s)
+    public void sendTo(String s) {
+
+        Recipient recipient = new Recipient();
+        recipient.setEmailAddress(s);
+        getRecipients().add(recipient);
+
     }
 
     // MODIFIES: this

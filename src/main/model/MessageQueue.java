@@ -24,4 +24,14 @@ public class MessageQueue {
         queue.add(m);
     }
 
+    // EFFECTS: displays the queue as an enumerated list containing the message bodies
+    public void printQueue() {
+        String output = "";
+        int index = 0;
+        for (Message item : getQueue()) {
+            index++;
+            output += index + " - " + item.getBody() + "\n";
+        }
+        System.out.println(output);
+    }
 }
