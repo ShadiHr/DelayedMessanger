@@ -25,13 +25,29 @@ public class MessageQueue {
     }
 
     // EFFECTS: displays the queue as an enumerated list containing the message bodies
-    public void printQueue() {
+    @Override
+    public String toString() {
         String output = "";
         int index = 0;
         for (Message item : getQueue()) {
             index++;
             output += index + " - " + item.getBody() + "\n";
         }
-        System.out.println(output);
+        return output;
+    }
+
+    // EFFECTS: filters viewed queued by specific recipient
+    public String filterByRecipient(String user) {
+        String output = "";
+        int index = 0;
+        for (Message item : getQueue()) {
+            for (Recipient target : item.getRecipients()) {
+                if (target.getEmailAddress().equals(user)) {
+                    index++;
+                    output += index + " - " + item.getBody() + "\n";
+                }
+            }
+        }
+        return output;
     }
 }

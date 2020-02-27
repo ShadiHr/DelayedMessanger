@@ -75,10 +75,33 @@ public class Message {
         deliveryDate = new Date(year, month, day);
     }
 
+
+    // MODIFIES:this
+    // EFFECTS: assigns the given string as message's delivery date
+    public void setDeliveryDate(String input) {
+
+        int year = Integer.parseInt(input.substring(0, 4)) - 1900;
+        int month = Integer.parseInt(input.substring(5, 7)) - 1;
+        int day = Integer.parseInt(input.substring(8));
+
+        setDeliveryDate(year, month, day);
+    }
+
     // MODIFIES: this
-    // EFFECTS: assigns teh given time as the message's delivery time
+    // EFFECTS: assigns the given time as the message's delivery time
     public void setDeliveryTime(int hour, int minute, int second) {
         deliveryTime = new Time(hour, minute, second);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: assigns the given string as the message's delivery time
+    public void setDeliveryTime(String input) {
+
+        int hour = Integer.parseInt(input.substring(0, 2));
+        int minute = Integer.parseInt(input.substring(3, 5));
+        int second = Integer.parseInt(input.substring(6));
+
+        setDeliveryTime(hour, minute, second);
     }
 
 }

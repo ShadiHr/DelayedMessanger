@@ -14,6 +14,8 @@ class MessageTest {
     ArrayList<Recipient> myRecipients;
     Recipient r1;
     Recipient r2;
+    String s1;
+    String s2;
 
     @BeforeEach
     public void runBefore() {
@@ -21,6 +23,8 @@ class MessageTest {
         myRecipients = new ArrayList<>();
         r1 = new Recipient();
         r2 = new Recipient();
+        s1 = "hallie.smith@gmail.com";
+        s2 = "kimmy.brown@gmail.com";
 
 
         r1.setFirstName("Jane");
@@ -45,6 +49,23 @@ class MessageTest {
         myMessage.sendTo(r2);
 
         assertEquals(2, myMessage.getRecipients().size());
+    }
+
+    @Test
+    public void testSendToStringSingle() {
+        myMessage.sendTo(s1);
+
+        assertEquals("hallie.smith@gmail.com", myMessage.getRecipients().get(0).getEmailAddress());
+    }
+
+    @Test
+    public void testSendToStringMultiple() {
+        myMessage.sendTo(s1);
+        myMessage.sendTo(s2);
+
+        assertEquals(2, myMessage.getRecipients().size());
+
+        assertEquals("kimmy.brown@gmail.com", myMessage.getRecipients().get(1).getEmailAddress());
     }
 
     @Test

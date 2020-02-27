@@ -79,60 +79,34 @@ public class Editor {
 
     // EFFECTS: displays the queue and provides user the option to filter by recipient
     public void viewQueue() {
-        messages.printQueue();
+        System.out.println(messages);
         System.out.println("Would you like to filter by user?");
         String command = input.nextLine();
 
         if (command.toLowerCase().equals("yes")) {
             System.out.println("Whose messages would you like to see?");
             String user = input.nextLine();
-            filterByRecipient(user);
+            System.out.println(messages.filterByRecipient(user));
         }
     }
 
-    // EFFECTS: filters viewed queued by specific recipient
-    private void filterByRecipient(String user) {
-        String output = "";
-        int index = 0;
-        for (Message item : messages.getQueue()) {
-            for (Recipient target : item.getRecipients()) {
-                if (target.getEmailAddress().equals(user)) {
-                    index++;
-                    output += index + " - " + item.getBody() + "\n";
-                }
-            }
-        }
-        System.out.println(output);
-    }
 
 
     // MODIFIES: message
     // EFFECTS: requests user for a delivery time and sets that as the message's delivery time
     private void askForDeliveryTime(Message message) {
-        String command;
         System.out.println("Please enter a delivery time (24 hr) in the hh:mm:ss format");
-        command = input.nextLine();
+        message.setDeliveryTime(input.nextLine());
 
-        int hour = Integer.parseInt(command.substring(0, 2));
-        int minute = Integer.parseInt(command.substring(3, 5));
-        int second = Integer.parseInt(command.substring(6));
-
-        message.setDeliveryTime(hour, minute, second);
     }
 
     // MODIFIES: message
     // EFFECTS: requests user for a delivery date and sets that as the message's delivery date
     private void askForDeliveryDate(Message message) {
-        String command;
         System.out.println("Please enter the date on which you'd like your message delivered in a YYYY MM DD format");
-        command = input.nextLine();
-
-        int year = Integer.parseInt(command.substring(0, 4)) - 1900;
-        int month = Integer.parseInt(command.substring(5, 7)) - 1;
-        int day = Integer.parseInt(command.substring(8));
-
-        message.setDeliveryDate(year, month, day);
+        message.setDeliveryDate(input.nextLine());
     }
+
 
     // MODIFIES: message
     // EFFECTS: requests user for content and sets that as the message's body

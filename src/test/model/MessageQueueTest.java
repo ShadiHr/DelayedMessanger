@@ -36,6 +36,15 @@ public class MessageQueueTest {
 
         assertEquals(3, q1.getQueue().size());
     }
+
+    @Test
+    public void testPrintQueueEmpty() {
+
+        assertEquals(0, q1.getQueue().size());
+
+        assertEquals("", q1.toString());
+
+    }
 }
 
 
