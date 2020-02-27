@@ -128,7 +128,6 @@ public class Editor {
             if (command.equals("q")) {
                 break;
             }
-
             message.sendTo(command);
         }
     }

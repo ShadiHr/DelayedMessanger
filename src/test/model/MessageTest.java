@@ -16,6 +16,7 @@ class MessageTest {
     Recipient r2;
     String s1;
     String s2;
+    Time t1;
 
     @BeforeEach
     public void runBefore() {
@@ -25,6 +26,7 @@ class MessageTest {
         r2 = new Recipient();
         s1 = "hallie.smith@gmail.com";
         s2 = "kimmy.brown@gmail.com";
+        t1 = new Time(12, 30, 00);
 
 
         r1.setFirstName("Jane");
@@ -84,11 +86,27 @@ class MessageTest {
     }
 
     @Test
-    public void testSetDeliveryDate() {
-        myMessage.setDeliveryDate(2020, 04, 15);
+    public void testSetDeliveryTimeString() {
+        myMessage.setDeliveryTime("12:30:00");
 
-        assertEquals(new Date(2020, 04, 15 ), myMessage.getDeliveryDate());
+        assertEquals(t1, myMessage.getDeliveryTime());
+    }
+
+
+    @Test
+    public void testSetDeliveryDate() {
+        myMessage.setDeliveryDate(120, 04, 15);
+
+        assertEquals(new Date(120, 04, 15), myMessage.getDeliveryDate());
 
     }
+
+    @Test
+    public void testSetDeliveryDateString() {
+        myMessage.setDeliveryDate("2020 01 15");
+
+        assertEquals(new Date(120, 00, 15), myMessage.getDeliveryDate());
+    }
+
 
 }

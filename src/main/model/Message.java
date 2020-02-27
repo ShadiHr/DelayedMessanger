@@ -60,7 +60,6 @@ public class Message {
         Recipient recipient = new Recipient();
         recipient.setEmailAddress(s);
         getRecipients().add(recipient);
-
     }
 
     // MODIFIES: this
@@ -75,7 +74,7 @@ public class Message {
         deliveryDate = new Date(year, month, day);
     }
 
-
+    // REQUIRES: string pass in the YYYY MM DD form
     // MODIFIES:this
     // EFFECTS: assigns the given string as message's delivery date
     public void setDeliveryDate(String input) {
@@ -93,6 +92,7 @@ public class Message {
         deliveryTime = new Time(hour, minute, second);
     }
 
+    // REQUIRES: string passed in the hh:mm:ss form
     // MODIFIES: this
     // EFFECTS: assigns the given string as the message's delivery time
     public void setDeliveryTime(String input) {
